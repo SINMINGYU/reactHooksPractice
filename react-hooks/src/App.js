@@ -11,8 +11,14 @@ import useConfirm from "./UseConfirm";
 import usePreventLeave from "./UsePreventLeave";
 import useBeforeLeave from "./UseBeforeLeave";
 import useFadeIn from "./UseFadeIn";
+import useNetwork from "./UseNetwork";
 
 function App() {
+    // useNetwork
+    const handleNetworkChange = (online) => {
+        console.log(online ? "We just went online" : "We are offline");
+    };
+    const onLine = useNetwork(handleNetworkChange);
     // useFadeIn
     const fadeInH1 = useFadeIn(1, 2);
     const fadeInP = useFadeIn(5, 10);
@@ -39,6 +45,7 @@ function App() {
 
     return (
         <div className="App">
+            <h3>{onLine ? "Online" : "Offline"}</h3>
             <h1 ref={(h1Title, fadeInH1.ref)} style={fadeInH1.style}>
                 🪝 Practice React Hooks 🪝
             </h1>
