@@ -14,8 +14,14 @@ import useFadeIn from "./UseFadeIn";
 import useNetwork from "./UseNetwork";
 import useScroll from "./UseScroll";
 import useFullscreen from "./useFullscreen";
+import useNotification from "./UseNotification";
 
 function App() {
+    // useNotification
+    const triggerNotif = useNotification("Can i steal your kimchi?", {
+        body: "I love kimchi dont you?",
+    });
+
     // useFullscreen
     const onFullS = (isFull) => {
         console.log(isFull ? "We are full" : "We are small");
@@ -56,7 +62,7 @@ function App() {
 
     return (
         <div className="App">
-            <h3>{onLine ? "Online" : "Offline"}</h3>
+            <h3>{onLine ? "Online 🟢" : "Offline 🔴"}</h3>
             <h1 ref={(h1Title, fadeInH1.ref)} style={fadeInH1.style}>
                 🪝 Practice React Hooks 🪝
             </h1>
@@ -90,6 +96,10 @@ function App() {
                         <button onClick={exitFull}>Exit fullscreen</button>
                     </div>
                     <button onClick={triggerFull}>Make fullscreen!</button>
+                </div>
+                <br />
+                <div>
+                    <button onClick={triggerNotif}>Hello~!</button>
                 </div>
             </div>
             <div style={{ height: "1000vh" }}>
