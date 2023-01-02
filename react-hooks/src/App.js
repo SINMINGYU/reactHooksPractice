@@ -7,15 +7,25 @@ import UseEffectButton from "./UseEffectIntro";
 import inputData from "./inputData";
 import UseTitle from "./UseTitle";
 import UseClick from "./UseClick";
+import useConfirm from "./UseConfirm";
+import usePreventLeave from "./UsePreventLeave";
 
 function App() {
-    // UseClick
+    // usePreventLeave
+    const { enablePrevent, disablePrevent } = usePreventLeave();
+
+    // useClick
     const sayHelloH1Title = () => console.log("hello h1 title");
     const h1Title = UseClick(sayHelloH1Title);
 
-    // UseTitle
+    // useTitle
     const titleUpdater = UseTitle();
     setTimeout(() => titleUpdater("Home"), 5000);
+
+    //useConfirm
+    const deleteWorld = () => console.log("Deleting the world");
+    const abort = () => console.log("aborted");
+    const confirmDelete = useConfirm("Are you sure", deleteWorld, abort);
 
     return (
         <div className="App">
@@ -29,6 +39,11 @@ function App() {
                 />
                 <br />
                 <UseEffectButton />
+                <br />
+                <button onClick={confirmDelete}>Delete the world</button>
+                <br />
+                <button onClick={enablePrevent}>Protect</button>
+                <button onClick={disablePrevent}>Unprotect</button>
             </div>
         </div>
     );
