@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import content from "./content";
 import UseInput from "./UseInput";
@@ -9,8 +9,13 @@ import UseTitle from "./UseTitle";
 import UseClick from "./UseClick";
 import useConfirm from "./UseConfirm";
 import usePreventLeave from "./UsePreventLeave";
+import useBeforeLeave from "./UseBeforeLeave";
 
 function App() {
+    // useBeforeLeave
+    const begForLife = () => console.log("Pls don't leave");
+    useBeforeLeave(begForLife);
+
     // usePreventLeave
     const { enablePrevent, disablePrevent } = usePreventLeave();
 
