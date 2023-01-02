@@ -16,6 +16,7 @@ const UseInput = ({ initialValue, validator }) => {
             setValue(value);
         }
     };
+    console.log(value);
     return (
         <div>
             <input placeholder="Name" value={value} onChange={onChange} />

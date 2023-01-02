@@ -3,7 +3,7 @@ import { useState } from "react";
 const UseTabs = ({ initialTab, allTabs }) => {
     const [currentIndex, setCurrentIndex] = useState(initialTab);
 
-    const curretItem = allTabs[currentIndex];
+    const currentItem = allTabs[currentIndex];
 
     const handleClick = (event, key) => {
         console.log(event.target, key);
@@ -13,6 +13,7 @@ const UseTabs = ({ initialTab, allTabs }) => {
     if (!allTabs || !Array.isArray(allTabs)) {
         return;
     }
+    console.log(currentItem.content);
 
     return (
         <div>
@@ -21,7 +22,7 @@ const UseTabs = ({ initialTab, allTabs }) => {
                     {section.tab}
                 </button>
             ))}
-            <div>{curretItem.content}</div>
+            <div>{currentItem.content}</div>
         </div>
     );
 };
