@@ -1,16 +1,14 @@
 import { useState } from "react";
 
 const UseInput = ({ initialValue, validator }) => {
-    console.log(validator);
+    // console.log(validator);
+    // console.log(initialValue);
     const [value, setValue] = useState(initialValue);
     const onChange = (event) => {
         const {
             target: { value },
         } = event;
         let willUpdate = true;
-        // const validator = (value) => {
-        //     return !value.includes("@");
-        // };
         if (typeof validator == "function") {
             willUpdate = validator(value);
         }
@@ -18,7 +16,6 @@ const UseInput = ({ initialValue, validator }) => {
             setValue(value);
         }
     };
-    // return { value, onChange };
     return (
         <div>
             <input placeholder="Name" value={value} onChange={onChange} />

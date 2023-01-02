@@ -3,18 +3,21 @@ import content from "./content";
 import UseInput from "./UseInput";
 import UseTabs from "./UseTabs";
 
+const inputData = {
+    initialValue: "mr.",
+    validator: (value) => !value.includes("@"),
+};
+
 function App() {
-    const tabs = UseTabs(0, content);
     return (
         <div className="App">
             <h1>Hello</h1>
             <div>
-                {tabs}
+                <UseTabs initialTab={0} allTabs={content} />
                 <br />
-
                 <UseInput
-                    initialValue={"mr."}
-                    validator={(value) => !value.includes("@")}
+                    initialValue={inputData.initialValue}
+                    validator={inputData.validator}
                 />
             </div>
         </div>
