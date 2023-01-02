@@ -13,8 +13,15 @@ import useBeforeLeave from "./UseBeforeLeave";
 import useFadeIn from "./UseFadeIn";
 import useNetwork from "./UseNetwork";
 import useScroll from "./UseScroll";
+import useFullscreen from "./useFullscreen";
 
 function App() {
+    // useFullscreen
+    const onFullS = (isFull) => {
+        console.log(isFull ? "We are full" : "We are small");
+    };
+    const { element, triggerFull, exitFull } = useFullscreen(onFullS);
+
     // useScroll
     const { y } = useScroll();
 
@@ -64,10 +71,26 @@ function App() {
                 <br />
                 <UseEffectButton />
                 <br />
-                <button onClick={confirmDelete}>Delete the world</button>
+                <div>
+                    <button onClick={confirmDelete}>Delete the world</button>
+                </div>
                 <br />
-                <button onClick={enablePrevent}>Protect</button>
-                <button onClick={disablePrevent}>Unprotect</button>
+                <div>
+                    <button onClick={enablePrevent}>Protect</button>
+                    <button onClick={disablePrevent}>Unprotect</button>
+                </div>
+                <br />
+                <div>
+                    <div ref={element}>
+                        <img
+                            src="https://i.ibb.co/R6RwNxx/grape.jpg"
+                            alt="grape"
+                            width="250"
+                        />
+                        <button onClick={exitFull}>Exit fullscreen</button>
+                    </div>
+                    <button onClick={triggerFull}>Make fullscreen!</button>
+                </div>
             </div>
             <div style={{ height: "1000vh" }}>
                 <h1
