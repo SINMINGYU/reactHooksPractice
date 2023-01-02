@@ -12,8 +12,12 @@ import usePreventLeave from "./UsePreventLeave";
 import useBeforeLeave from "./UseBeforeLeave";
 import useFadeIn from "./UseFadeIn";
 import useNetwork from "./UseNetwork";
+import useScroll from "./UseScroll";
 
 function App() {
+    // useScroll
+    const { y } = useScroll();
+
     // useNetwork
     const handleNetworkChange = (online) => {
         console.log(online ? "We just went online" : "We are offline");
@@ -64,6 +68,15 @@ function App() {
                 <br />
                 <button onClick={enablePrevent}>Protect</button>
                 <button onClick={disablePrevent}>Unprotect</button>
+            </div>
+            <div style={{ height: "1000vh" }}>
+                <h1
+                    style={{
+                        position: "fixed",
+                        color: y > 100 ? "red" : "blue",
+                    }}>
+                    I Can Scroll!!
+                </h1>
             </div>
         </div>
     );
