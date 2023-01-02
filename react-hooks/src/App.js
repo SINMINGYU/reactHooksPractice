@@ -1,12 +1,9 @@
-import React from "react";
+// import React, { useEffect, useState } from "react";
 import content from "./content";
 import UseInput from "./UseInput";
 import UseTabs from "./UseTabs";
-
-const inputData = {
-    initialValue: "mr.",
-    validator: (value) => !value.includes("@"),
-};
+import UseEffectButton from "./UseEffectIntro";
+import inputData from "./inputData";
 
 function App() {
     return (
@@ -19,6 +16,8 @@ function App() {
                     initialValue={inputData.initialValue}
                     validator={inputData.validator}
                 />
+                <br />
+                <UseEffectButton />
             </div>
         </div>
     );
