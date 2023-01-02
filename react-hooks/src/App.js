@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import content from "./content";
 import UseInput from "./UseInput";
@@ -10,8 +10,13 @@ import UseClick from "./UseClick";
 import useConfirm from "./UseConfirm";
 import usePreventLeave from "./UsePreventLeave";
 import useBeforeLeave from "./UseBeforeLeave";
+import useFadeIn from "./UseFadeIn";
 
 function App() {
+    // useFadeIn
+    const fadeInH1 = useFadeIn(1, 2);
+    const fadeInP = useFadeIn(5, 10);
+
     // useBeforeLeave
     const begForLife = () => console.log("Pls don't leave");
     useBeforeLeave(begForLife);
@@ -34,7 +39,10 @@ function App() {
 
     return (
         <div className="App">
-            <h1 ref={h1Title}>🪝 Practice React Hooks 🪝</h1>
+            <h1 ref={(h1Title, fadeInH1.ref)} style={fadeInH1.style}>
+                🪝 Practice React Hooks 🪝
+            </h1>
+            <p {...fadeInP}>fadeIn text~! 😝</p>
             <div>
                 <UseTabs initialTab={0} allTabs={content} />
                 <br />

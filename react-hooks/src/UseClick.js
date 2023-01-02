@@ -15,6 +15,7 @@ const UseClick = (onClick) => {
             element.current.addEventListener("click", onClick);
             elementRefValue = element.current;
         }
+        console.log(element);
         return () => {
             if (elementRefValue) {
                 elementRefValue.removeEventListener("click", onClick);
